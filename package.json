@@ -1,0 +1,25 @@
+{
+  "name": "socket-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "authentication.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirkabbott1/markdownAPI.git"
+  },
+  "author": "kirk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirkabbott1/markdownAPI/issues"
+  },
+  "homepage": "https://github.com/kirkabbott1/markdownAPI#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "fs-promise": "^1.0.0",
+    "socket-io": "0.0.0",
+    "socket.io": "^1.7.1"
+  }
+}
