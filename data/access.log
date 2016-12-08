@@ -1,3 +1,19 @@
 ::1 - - [07/Dec/2016:15:44:55 +0000] "GET /documents/rickAstey.md/display HTTP/1.1" 200 302 "-" "PostmanRuntime/3.0.1"
 ::1 - - [07/Dec/2016:15:45:39 +0000] "GET /documents/rickAstey.md/display HTTP/1.1" 200 302
 GET /documents/rickAstey.md/display 200 302 - 119.758 ms
+GET /documents/ 500 1242 - 7.671 ms
+POST /login 500 1239 - 3.879 ms
+POST /login 500 1239 - 2.676 ms
+POST /login 401 32 - 5.380 ms
+POST /login 401 32 - 0.628 ms
+POST /api/login 500 1266 - 3.118 ms
+POST /api/login 200 48 - 4.464 ms
+GET /documents?token=7bd3be99-213c-45c2-aa69-81e349c1425f 200 29 - 2.785 ms
+GET /documents?token=7bd3be99-213c-45c2-aa69-81e349c1425f 200 29 - 0.668 ms
+GET /documents?token=7bd3be99-213c-45c2-aa69-81e349c1425f 401 32 - 4.327 ms
+GET /documents?token=7bd3be99-213c-45c2-aa69-81e349c1425f 401 32 - 0.667 ms
+GET /documents?token=7bd3be99-213c-45c2-aa69-81e349c1425f 401 55 - 3.270 ms
+POST /login 401 55 - 2.221 ms
+POST /login 401 55 - 0.843 ms
+POST /api/login 200 48 - 9.368 ms
+GET /documents?token=9921bf54-33a8-4d59-8239-d1ed314a912f 200 29 - 23.467 ms

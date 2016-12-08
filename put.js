@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+const fs = require('fs-promise');
 const marked = require('marked');
 const morgan = require('morgan');
 const bcrypt = require('bcrypt');
+const uuid = require('uuid-v4')
+const globalToken = {};
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,31 +20,46 @@ app.put('/documents/:filepath', function(req, res) {
   let filepath = './data/' + req.params.filepath;
   let contents = req.body.contents;
   fs.writeFile(filepath, contents, function(err) {
+    .then(function() {
+      res.json({ "message": 'file ', "filepath" : filepath})
+    })
+    .catch(function(err) {
+      res.json({ "message": 'erra erra erra aye' + err.message });
+    })
+  })
+})
+
+app.put('/documents/:filepath', function(req, res) {
+  let filepath = './data/' + req.params.filepath;
+  let contents = req.body.contents;
+  fs.writeFile(filepath, contents, function(err) {
     if (err) {
-      res.json({ "message": 'sorry dude' + err.message });
+      res.json({ "message": 'erra erra erra aye' + err.message });
     } else {
       res.json({ "message": 'file ', "filepath" : filepath})
     }
   })
 })
 
-function auth(req, resp, next) {
-  if (req.query.token === token) {
+app.post('/api/login', function(req, res, next) {
+  var username = req.body.username;
+  var token = uuid();
+  globalToken[token] = username;
+  res.json({
+    "token": token
+  });
+});
+
+app.use(function auth(req, resp, next) {
+  if (req.query.token in globalToken) {
+    console.log("logged in")
     next()
   } else {
-    res.status(401);
-    res.jason({error: 'Login superfail lolz'})
+    resp.status(401);
+    resp.json({error: 'token not recognized or something like that'})
   }
-}
-app.post('/api/login', function(req, res,next) {
-  var username = req.body.username;
-  var token = uuidV4()
-  if (err) {
-    res.json({ message: 'oops, this is why ' + err.message });
-  } else {
+});
 
-  }
-})
 app.get('/documents/:filepath/display', function(req, res) {
   let filename = req.params.filepath;
   var file = './data/' + req.params.filepath;
