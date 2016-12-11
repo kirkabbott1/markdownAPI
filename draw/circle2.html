@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>circ2</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="2000" height="2000"></canvas>
+    <script src="jquery-3.1.1.js"></script>
+
+
+    <script>
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      var mousebool = false;
+      drawCircle = function(x,y) {
+        ctx.beginPath();
+        ctx.fillStyle = 'blue';
+        ctx.ellipse(x, y, 4, 4, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      $('#canvas').on('mousemove', function(poopevent) {
+        if (mousebool) {
+          drawCircle(poopevent.pageX, poopevent.pageY)
+        }
+      });
+      $('#canvas').on('mousedown', function(poopevent) {
+        mousebool = true;
+      });
+      $('#canvas').on('mouseup', function(poopevent) {
+        mousebool = false;
+      });
+
+      // ctx.beginPath();
+      // ctx.fillStyle = 'yellow';
+      // ctx.ellipse(100, 100, 20, 20, 0, 0, Math.PI * 2)
+      // ctx.fill();
+
+      window.addEventListener('keydown', function(poop) {
+        var key = poop.keyCode;
+        if (key === 37) {
+          circleX -= speed;
+        }
+        if (key === 39) {
+          circleX -= speed;
+        }
+        if (key === 38) {
+          circleX -= speed;
+        }
+        if (key === 40) {
+          circleX -= speed;
+        }
+      });
+    </script>
+  </body>
+</html>
